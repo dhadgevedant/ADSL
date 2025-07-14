@@ -23,14 +23,14 @@ void moveZeros( vector<int> &inp){
             e--;
 
         }
-        s++;
+        else s++;
     }
 
 }
 
 int main(){
 
-    vector <int> a = {0,0,0,0,0,1};
+    vector <int> a = {1,0,0,1,0,1,1,0,1,0,1,1,0,1,0,0,0};
     moveZeros(a);
     
     
