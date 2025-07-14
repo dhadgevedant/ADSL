@@ -10,26 +10,38 @@ using namespace std;
 
 int countZero( vector<int>inp ){
 
-    int i = 0, count = 0;
+    int arraySize = inp.size();
 
-    while(i < inp.size()){
+    //if there are no 1s in the array
+    if(inp[0] != 1)return arraySize;
 
-        //if cur is 1, then next is always 0 so no need to check next one so +2 and count++
-        //if cur is 0 then also count++ but only increment i +1
-        //no matter what happens the count is alywas goind to increase
+
+    int s = 0, e = arraySize-1, mid;
+
+    while(s<=e){
+
+        mid = ((s+e)/2);
         
-        if(inp[i]==1)i+=2;
-        else i++;
+        if(inp[mid] == 1){
 
-        count++;
+            if(inp[mid+1] == 0) return arraySize-mid-1;
+
+            s = mid+1;
+        }
+        else{
+            
+            if(inp[mid-1] == 1) return arraySize-mid;
+
+            e = mid-1;
+        }
     }
 
-    return count;
+    return -1;
 }
 
 
 int main(){
 
-    cout<<countZero({1,0,0,1,0,1,0,0})<<endl;
+    cout<<countZero({1,1,1,1,0})<<endl;
     return 0;
 }
